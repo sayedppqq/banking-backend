@@ -10,7 +10,7 @@ import (
 
 const (
 	driver = "postgres"
-	source = "postgresql://root:root@localhost:5432/postgres?sslmode=disable"
+	source = "postgresql://root:root@localhost:5432/bank?sslmode=disable"
 )
 
 var testStore Store // store for testing purpose.
