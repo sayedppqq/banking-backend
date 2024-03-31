@@ -42,7 +42,7 @@ func RandomString(n int) string {
 	return sb.String()
 }
 
-// RandomOwner generates a random owner name
+// RandomOwnerName generates a random owner name
 func RandomOwnerName() string {
 	return RandomString(5) + " " + RandomString(6)
 }
