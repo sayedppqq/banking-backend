@@ -4,8 +4,8 @@ INSERT INTO transfers (
     to_account_id,
     amount
 ) VALUES (
-     $1, $2, $3
-) RETURNING *;
+             $1, $2, $3
+         ) RETURNING *;
 
 -- name: GetTransfer :one
 SELECT * FROM transfers

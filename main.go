@@ -14,12 +14,14 @@ func main() {
 	if err != nil {
 		log.Fatal("cannot load config: ", err)
 	}
+
 	conn, err := pgxpool.New(context.Background(), config.DBSource)
 	if err != nil {
 		log.Fatal("can not create pg connection pool", err)
 	}
+
 	store := db.NewStore(conn)
-	server := api.NewServer(store)
+	server, err := api.NewServer(store, config)
 
 	err = server.Run(config.HostAddress)
 	if err != nil {

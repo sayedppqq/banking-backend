@@ -9,5 +9,5 @@ sql:
               out: "./db/sqlc"
               sql_package: "pgx/v5"
               emit_json_tags: true
-              emit_interface: false
+              emit_interface: true  # It will create an interface(Querier) that contains all the crud function.
               emit_empty_slices: true

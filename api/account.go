@@ -2,7 +2,6 @@ package api
 
 import (
 	"errors"
-	"fmt"
 	"github.com/gin-gonic/gin"
 	db "github.com/sayedppqq/banking-backend/db/sqlc"
 	"github.com/sayedppqq/banking-backend/util"
@@ -73,12 +72,12 @@ func (server *Server) listAccount(ctx *gin.Context) {
 		ctx.JSON(http.StatusBadRequest, errorResponse(err))
 		return
 	}
-	fmt.Println(req.PageID, req.PageSize)
+
 	arg := db.ListAccountsParams{
 		Limit:  req.PageSize,
 		Offset: (req.PageID - 1) * req.PageSize,
 	}
-	fmt.Println(arg.Limit, arg.Offset)
+
 	accounts, err := server.store.ListAccounts(ctx, arg)
 	if err != nil {
 		ctx.JSON(http.StatusInternalServerError, errorResponse(err))

@@ -4,24 +4,30 @@ INSERT INTO accounts (
     balance,
     currency
 ) VALUES (
-    $1, $2, $3
-) RETURNING *;
+             $1, $2, $3
+         ) RETURNING *;
 
 -- name: GetAccount :one
 SELECT * FROM accounts
 WHERE id = $1 LIMIT 1;
 
+-- name: GetAccountForUpdate :one
+SELECT * FROM accounts
+WHERE id = $1 LIMIT 1
+FOR NO KEY UPDATE;
+
 -- name: ListAccounts :many
 SELECT * FROM accounts
+WHERE owner = $1
 ORDER BY id
-LIMIT $1
-OFFSET $2;
+    LIMIT $2
+OFFSET $3;
 
 -- name: UpdateAccount :one
 UPDATE accounts
 SET balance = $2
 WHERE id = $1
-RETURNING *;
+    RETURNING *;
 
 -- name: AddAccountBalance :one
 UPDATE accounts

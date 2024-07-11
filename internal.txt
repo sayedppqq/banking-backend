@@ -1,0 +1,5 @@
+Tool used:
+    - db DRUD : sqlc (postgres)
+    - web framework : gin
+    - config management : viper
+    -
