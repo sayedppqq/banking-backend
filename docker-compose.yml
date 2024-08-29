@@ -28,6 +28,17 @@ services:
       - bank_network
     restart: always
 
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"
+    networks:
+      - bank_network
+    depends_on:
+      - postgres
+
 networks:
   bank_network:
     driver: bridge
