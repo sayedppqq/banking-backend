@@ -12,7 +12,7 @@ type JWTMaker struct {
 	secretKey string
 }
 
-func (maker JWTMaker) generateToken(username string, role string, duration time.Duration) (string, *Payload, error) {
+func (maker JWTMaker) GenerateToken(username string, role string, duration time.Duration) (string, *Payload, error) {
 	payload, err := NewPayload(username, role, duration)
 	if err != nil {
 		return "", nil, err
@@ -22,7 +22,7 @@ func (maker JWTMaker) generateToken(username string, role string, duration time.
 	return token, payload, err
 }
 
-func (maker JWTMaker) verifyToken(token string) (*Payload, error) {
+func (maker JWTMaker) VerifyToken(token string) (*Payload, error) {
 	jwtToken, err := jwt.ParseWithClaims(token, &Payload{}, func(token *jwt.Token) (interface{}, error) {
 		_, ok := token.Method.(*jwt.SigningMethodHMAC)
 		if !ok {

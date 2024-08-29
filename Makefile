@@ -1,5 +1,8 @@
 DB_URL=postgresql://root:root@localhost:5432/bank?sslmode=disable
 
+new_migration:
+	migrate create -ext sql -dir db/migration -seq $(name)
+
 migrateup:
 	migrate -path db/migration -database "$(DB_URL)" -verbose up
 

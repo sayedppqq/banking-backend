@@ -44,8 +44,11 @@ func RandomString(n int) string {
 }
 
 // RandomOwnerName generates a random owner name
-func RandomOwnerName() string {
-	return RandomString(5) + " " + RandomString(6)
+func RandomOwnerName(withSpace bool) string {
+	if withSpace {
+		return RandomString(5) + " " + RandomString(6)
+	}
+	return RandomString(6)
 }
 
 // RandomEmail generates a random email

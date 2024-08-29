@@ -12,7 +12,7 @@ type PasetoMaker struct {
 	key    []byte
 }
 
-func (p PasetoMaker) generateToken(username string, role string, duration time.Duration) (string, *Payload, error) {
+func (p PasetoMaker) GenerateToken(username string, role string, duration time.Duration) (string, *Payload, error) {
 	payload, err := NewPayload(username, role, duration)
 	if err != nil {
 		return "", nil, err
@@ -23,7 +23,7 @@ func (p PasetoMaker) generateToken(username string, role string, duration time.D
 
 }
 
-func (p PasetoMaker) verifyToken(token string) (*Payload, error) {
+func (p PasetoMaker) VerifyToken(token string) (*Payload, error) {
 	payload := &Payload{}
 	err := p.paseto.Decrypt(token, p.key, payload, nil)
 	if err != nil {
