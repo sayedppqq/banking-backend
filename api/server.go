@@ -47,3 +47,7 @@ func (server *Server) helloServer(ctx *gin.Context) {
 	fmt.Println("hello...")
 	ctx.JSON(http.StatusOK, "sayed")
 }
+
+func errorResponse(err error) gin.H {
+	return gin.H{"error": err.Error()}
+}

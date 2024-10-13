@@ -1,0 +1,7 @@
+- make deployment ci , build image and push to amazon ECR
+- use AWS RDS Postgres as database engine
+- use AWS secret management to manager config.env folders
+- run the product in docker just by taking the image from AWS registry
+- crete a eks cluster and deploy the shit to there
+- hit the app with external ip
+- 
