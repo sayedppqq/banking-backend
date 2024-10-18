@@ -10,9 +10,9 @@ WORKDIR /app
 COPY --from=builder /app/main .
 COPY config.env .
 COPY start.sh .
-RUN chmod +x /app/start.sh
+COPY wait-for.sh .
+COPY db/migration ./db/migration
 
-EXPOSE 8081
-
+EXPOSE 8080
 CMD [ "/app/main" ]
 ENTRYPOINT [ "/app/start.sh" ]
