@@ -1,4 +1,4 @@
-DB_URL=postgresql://root:root@localhost:5432/bank?sslmode=disable
+DB_URL=postgresql://postgres:5QQyh8M2gwFGIhvYOMC0@bank.cx6k8446ilah.ap-south-1.rds.amazonaws.com:5432/bank
 
 new_migration:
 	migrate create -ext sql -dir db/migration -seq $(name)

@@ -35,6 +35,17 @@ services:
       ]
     command: [ "/app/main" ]
 
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: root@root.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    ports:
+      - "8081:80"
+    networks:
+      - bank_network
+    restart: always
 
 networks:
   bank_network:
