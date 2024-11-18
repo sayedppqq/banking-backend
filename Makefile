@@ -1,4 +1,4 @@
-DB_URL=postgresql://postgres:5QQyh8M2gwFGIhvYOMC0@bank.cx6k8446ilah.ap-south-1.rds.amazonaws.com:5432/bank
+DB_URL=postgresql://root:root@localhost:5432/bank?sslmode=disable
 
 new_migration:
 	migrate create -ext sql -dir db/migration -seq $(name)
@@ -17,6 +17,12 @@ migratedown1:
 
 sqlc:
 	sqlc generate
+
+db_docs:
+	dbdocs build doc/db.dbml
+
+db_schema:
+	dbml2sql --postgres -o doc/schema.sql doc/db.dbml
 
 test:
 	go test -v -cover -short ./...
