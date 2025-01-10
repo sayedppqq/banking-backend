@@ -33,4 +33,13 @@ server:
 mockgen:
 	mockgen -package mockdb -destination /home/sayed/go/src/github.com/sayedppqq/banking-backend/db/mock/store.go -build_flags=--mod=mod github.com/sayedppqq/banking-backend/db/sqlc Store
 
-.PHONY: migrateup migratedown sqlc test server mockgen
+proto:
+	rm -f pb/*.go
+	rm -f doc/swagger/*.swagger.json
+	protoc --proto_path=proto --go_out=pb --go_opt=paths=source_relative \
+	--go-grpc_out=pb --go-grpc_opt=paths=source_relative \
+	--grpc-gateway_out=pb --grpc-gateway_opt=paths=source_relative \
+	--openapiv2_out=doc/swagger --openapiv2_opt=allow_merge=true,merge_file_name=simple_bank \
+	proto/*.proto
+
+.PHONY: migrateup migratedown sqlc test server mockgen proto

@@ -8,7 +8,8 @@ import (
 type Config struct {
 	DBSource             string        `mapstructure:"DB_SOURCE"`
 	MigrationsDirectory  string        `mapstructure:"MIGRATIONS_DIRECTORY"`
-	HostAddress          string        `mapstructure:"HOST_ADDRESS"`
+	HTTPHostAddress      string        `mapstructure:"HTTP_HOST_ADDRESS"`
+	GrpcHostAddress      string        `mapstructure:"GRPC_HOST_ADDRESS"`
 	TokenSymmetricKey    string        `mapstructure:"TOKEN_SYMMETRIC_KEY"`
 	AccessTokenDuration  time.Duration `mapstructure:"ACCESS_TOKEN_DURATION"`
 	RefreshTokenDuration time.Duration `mapstructure:"REFRESH_TOKEN_DURATION"`
